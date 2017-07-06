@@ -1,23 +1,25 @@
 <template>
   <div class="feed-section">
     <!-- 布局1 -->
-    <router-link to="/?" class="feed-item" tag="a">
+    <router-link to="/?" class="feed-item" tag="a" v-for="(item,index) in recommend_feeds">
       <div class="feed-content">
-        <div class="cover"
-             style='position: relative;background: url("https://qnmob2.doubanio.com/lpic/s29459711.jpg?imageView2/2/q/80/w/330/h/330/format/jpg") center center / cover no-repeat rgb(250, 250, 250);'>
-          <div style="padding-top: 100%;"></div>
+        <div class="cover j-cover"
+             style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
+             :style="{backgroundImage: 'url(' + item.target.cover_url + ')'}"
+             @error="catchErr"
+        >
+          <div style="padding-top: 100%"></div>
         </div>
-        <h3>一周豆瓣热门图书｜寺山修司又开了一家奇妙图书馆</h3>
+        <h3>{{item.title}}</h3>
         <p>
-          七月第一周，冷知识狂魔寺山修司《不思议图书馆》开业迎宾，在奇闻异事的海洋中做一场白日梦；青山七惠转型之作《快乐》探测人性与欲望的深暗边界；《醒来的女性》以疼痛写就一代美国女性的荆棘之路；韩松落随笔新作书写小镇青年的成长史诗。
+          {{item.target.desc}}
         </p>
       </div>
       <div class="author">
-        <span class="name">豆瓣读书</span>
+        <span class="name">by {{item.target.author.name}}</span>
       </div>
-      <span class="feed-label">来自栏目 一周热门图书</span>
+      <span class="feed-label">{{item.source_cn}}</span>
     </router-link>
-
     <!-- 布局5 -->
     <router-link to="/?" class="feed-item" tag="a">
       <div class="feed-content">
@@ -57,16 +59,22 @@
 <script>
   export default {
     name: 'feed-section',
+    props: [
+      'recommend_feeds'
+    ],
     data () {
       return {
         myData: []
       }
     },
     mounted: function () {
-//      console.log('22')
-//      this.show()
     },
     methods: {
+      catchErr (e) {
+//        const sourcesImg = e.target.getAttribute('src')
+//        e.target.setAttribute('src', sourcesImg)
+        console.log(e)
+      }
     }
   }
 </script>
@@ -74,8 +82,7 @@
 <style scoped>
   .feed-section .feed-item {
     display: block;
-    padding: 2.5rem 1.8rem 2.5rem 0;
-    margin-left: 0.9rem;
+    padding: 2.5rem 1.8rem 2.5rem 0.9rem;
     position: relative;
     color: #494949
   }

@@ -5,7 +5,9 @@
     </header>
     <div class="dou-bodyer">
     </div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
@@ -26,8 +28,13 @@
     top:0;
     left: 0;
     width: 100%;
+    background-color: #fff;
+    z-index:999;
   }
   .dou-bodyer{
     padding-top: 4.7rem;
+  }
+  #app{
+    -webkit-user-select: none;
   }
 </style>

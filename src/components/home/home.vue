@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <quick-nav></quick-nav>
-    <feed-section></feed-section>
+    <feed-section :recommend_feeds="recommend_feeds"></feed-section>
     <br>
     <br>
     <br>
@@ -35,6 +35,7 @@
       starGetHomeData () {
         getHomeData().then((res) => {
           console.log(res.recommend_feeds)
+          this.recommend_feeds = res.recommend_feeds
         })
       }
     }
