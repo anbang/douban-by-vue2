@@ -1,59 +1,67 @@
 <template>
   <div class="feed-section">
-    <!-- 布局1 -->
     <router-link to="/?" class="feed-item" tag="a" v-for="(item,index) in recommend_feeds">
-      <div class="feed-content">
-        <div class="cover j-cover"
-             style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
-             :style="{backgroundImage: 'url(' + item.target.cover_url + ')'}"
-             @error="catchErr"
-        >
-          <div style="padding-top: 100%"></div>
-        </div>
-        <h3>{{item.title}}</h3>
-        <p>
-          {{item.target.desc}}
-        </p>
-      </div>
-      <div class="author">
-        <span class="name">by {{item.target.author.name}}</span>
-      </div>
-      <span class="feed-label">{{item.source_cn}}</span>
-    </router-link>
-    <!-- 布局5 -->
-    <router-link to="/?" class="feed-item" tag="a">
-      <div class="feed-content">
-        <div class="photos">
-          <div class="main"
-               style="">
-            <div></div>
+      <!-- 布局1 -->
+      <div v-if="item.layout !== 5">
+        <div class="feed-content">
+          <div class="cover"
+               style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
+               :style="{backgroundImage: 'url(' + item.target.cover_url + ')'}"
+               @error="catchErr"
+          >
+            <div style="padding-top: 100%"></div>
           </div>
-          <div class="aside">
-            <div class="aside-pic">
-              <div
-                style="">
-                <div style="padding-top: 100%;"></div>
-              </div>
-            </div>
-            <div class="aside-pic">
-              <div
-                style="">
-                <div style="padding-top: 100%;"></div>
-              </div>
-              <div class="more-pic">
-                <span class="count"></span>
-              </div>
-            </div>
-          </div>
+          <h3>{{item.title}}</h3>
+          <p>{{item.target.desc}}</p>
         </div>
-        <h3>冰岛星球</h3>
+        <div class="author">
+          <span class="name">by {{item.target.author.name}}</span>
+        </div>
+        <span class="feed-label">{{item.source_cn}}</span>
       </div>
-      <div class="author">
-        <span class="name">Summer</span>
-      </div>
-      <span class="feed-label">HaHa</span>
-    </router-link>
 
+      <!-- 布局5 -->
+      <div v-else="item.layout === 5">
+        <div class="feed-content">
+          <div class="photos">
+            <div class="main"
+                 style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
+                 :style="{backgroundImage: 'url(' + item.target.cover_url + ')'}"
+            >
+              <div></div>
+            </div>
+            <div class="aside">
+              <div class="aside-pic">
+                <div
+                  style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
+                  :style="{backgroundImage: 'url(' + item.target.more_pic_urls[0] + ')'}"
+                >
+                  <div style="padding-top: 100%;"></div>
+                </div>
+              </div>
+              <div class="aside-pic">
+                <div
+                  style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
+                  :style="{backgroundImage: 'url(' + item.target.more_pic_urls[1] + ')'}"
+                >
+                  <div style="padding-top: 100%;"></div>
+                </div>
+                <div class="more-pic">
+                  <span class="count">
+                    {{item.target.photos_count-3}}+
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3>{{item.title}}</h3>
+        </div>
+        <div class="author">
+          <span class="name">by {{item.target.author.name}}</span>
+        </div>
+        <span class="feed-label">{{item.source_cn}}</span>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
