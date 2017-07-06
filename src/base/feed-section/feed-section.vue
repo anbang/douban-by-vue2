@@ -1,6 +1,6 @@
 <template>
   <div class="feed-section">
-    <router-link to="/?" class="feed-item" tag="a" v-for="(item,index) in recommend_feeds">
+    <router-link to="/?" class="feed-item" tag="a" v-for="item in recommend_feeds" :key="item.id">
       <!-- 布局1 -->
       <div v-if="item.layout !== 5">
         <div class="feed-content">
@@ -8,6 +8,7 @@
                style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
                :style="{backgroundImage: 'url(' + item.target.cover_url + ')'}"
                @error="catchErr"
+               v-if="item.target.cover_url"
           >
             <div style="padding-top: 100%"></div>
           </div>

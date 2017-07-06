@@ -23,18 +23,22 @@
 </script>
 
 <style>
-  .dou-header{
+  .dou-header {
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
     background-color: #fff;
-    z-index:999;
+    z-index: 999;
   }
-  .dou-bodyer{
+
+  .dou-bodyer {
     padding-top: 4.7rem;
   }
-  #app{
+
+  #app {
     -webkit-user-select: none;
+    max-width: 40rem;
+    margin: 0 auto;
   }
 </style>
