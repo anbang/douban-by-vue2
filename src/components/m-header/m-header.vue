@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link to="/" tag="h1" class="header-logo">豆瓣</router-link>
+    <router-link to="/" tag="h1" class="header-logo">豆瓣 +</router-link>
     <div class="header-list">
       <router-link to="/movie"  class="list-item" tag="div"><span class="tab-link" style="color: #2384E8;">电影</span></router-link>
       <router-link to="/book"   class="list-item" tag="div"><span class="tab-link" style="color: #9F7860;">图书</span></router-link>
