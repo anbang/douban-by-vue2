@@ -6,8 +6,7 @@
         <div class="feed-content">
           <div class="cover"
                style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
-               :style="{backgroundImage: 'url(' + item.target.cover_url + ')'}"
-               @error="catchErr"
+               v-lazy:background-image="item.target.cover_url"
                v-if="item.target.cover_url"
           >
             <div style="padding-top: 100%"></div>
@@ -27,7 +26,7 @@
           <div class="photos">
             <div class="main"
                  style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
-                 :style="{backgroundImage: 'url(' + item.target.cover_url + ')'}"
+                 v-lazy:background-image="item.target.cover_url"
             >
               <div></div>
             </div>
@@ -35,7 +34,7 @@
               <div class="aside-pic">
                 <div
                   style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
-                  :style="{backgroundImage: 'url(' + item.target.more_pic_urls[0] + ')'}"
+                  v-lazy:background-image="item.target.more_pic_urls[0]"
                 >
                   <div style="padding-top: 100%;"></div>
                 </div>
@@ -43,7 +42,7 @@
               <div class="aside-pic">
                 <div
                   style="position: relative; background: center center / cover no-repeat rgb(250, 250, 250);"
-                  :style="{backgroundImage: 'url(' + item.target.more_pic_urls[1] + ')'}"
+                  v-lazy:background-image="item.target.more_pic_urls[1]"
                 >
                   <div style="padding-top: 100%;"></div>
                 </div>
@@ -79,11 +78,6 @@
     mounted: function () {
     },
     methods: {
-      catchErr (e) {
-//        const sourcesImg = e.target.getAttribute('src')
-//        e.target.setAttribute('src', sourcesImg)
-        console.log(e)
-      }
     }
   }
 </script>
