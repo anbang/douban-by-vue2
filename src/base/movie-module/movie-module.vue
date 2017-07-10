@@ -1,7 +1,7 @@
 <template>
   <section class="movie_showing">
     <header>
-      <h2 v-text="module_title ? module_title : movie_data.subject_collection.name"></h2>
+      <h2 v-text="module_title || (movie_data.subject_collection && movie_data.subject_collection.name)"></h2>
       <a :href="movie_more">更多</a>
     </header>
     <div class="section-content">
